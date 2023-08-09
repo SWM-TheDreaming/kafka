@@ -19,6 +19,7 @@ configurations {
 
 repositories {
 	mavenCentral()
+	mavenLocal()
 }
 
 dependencies {
@@ -31,7 +32,9 @@ dependencies {
 
 	// https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka
 	implementation 'org.springframework.kafka:spring-kafka:2.8.5'
+	implementation 'com.common:common-suite:1.2'
 }
+
 
 tasks.named('test') {
 	useJUnitPlatform()
