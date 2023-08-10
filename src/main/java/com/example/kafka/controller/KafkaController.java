@@ -19,12 +19,8 @@ public class KafkaController {
 
     @PostMapping("/message")
     public String sendMessage(@RequestParam("message") String message) {
-        KafkaDto kafkaDto = KafkaDto.builder()
-                .yyyymmdd("2021-01-01")
-                .skuCd("10300000033")
-                .fieldName("ipgoNo")
-                .diff(100).build();
-        this.producer.sendMessage(kafkaDto);
+
+
         return "success";
     }
 
