@@ -1,6 +1,5 @@
 package com.example.kafka.controller;
 
-import com.common.commonsuite.dto.KafkaDto;
 import com.example.kafka.producer.KafkaProducer;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
