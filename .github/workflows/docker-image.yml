@@ -14,6 +14,7 @@ jobs:
 
       - name: production application file setting
         run: |
+          mkdir -p ./src/main/resources
           touch ./src/main/resources/application.yml 
           echo ${{secrets.KAFKA_TOPIC_SERVICE_APPLICATION_YML}} > ./src/main/resources/application.yml
       - uses: actions/upload-artifact@v2
