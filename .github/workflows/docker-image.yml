@@ -53,5 +53,5 @@ jobs:
       - name: Build & Push to ECR
         run: |
           docker build -t suite-ecr:kafka-topic-service-latest .
-          docker tag suite-ecr:kafka-topic-service-latest 386659376683.dkr.ecr.ap-northeast-2.amazonaws.com/suite-ecr:kafka-topic-service-latest
-          docker push 386659376683.dkr.ecr.ap-northeast-2.amazonaws.com/suite-ecr:kafka-topic-service-latest
+          docker tag suite-ecr:kafka-topic-service-latest ${{ secrets.AWS_ACCOUNT_NUM }}.dkr.ecr.ap-northeast-2.amazonaws.com/suite-ecr:kafka-topic-service-latest
+          docker push ${{ secrets.AWS_ACCOUNT_NUM }}.dkr.ecr.ap-northeast-2.amazonaws.com/suite-ecr:kafka-topic-service-latest
