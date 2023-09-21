@@ -44,9 +44,7 @@ jobs:
       - name: Check if image with tag exists
         id: check-image
         run: |
-          IMAGE_TAG=suite-ecr:kafka-topic-service-latest
-          REPOSITORY=suite-ecr
-          if aws ecr describe-images --repository-name $REPOSITORY --image-ids imageTag=$IMAGE_TAG; then
+          if aws ecr describe-images --repository-name suite-ecr --image-ids imageTag=kafka-topic-service-latest; then
             echo "Image with tag $IMAGE_TAG exists in repository $REPOSITORY"
             echo "::set-output name=image_exists::true"
           else
