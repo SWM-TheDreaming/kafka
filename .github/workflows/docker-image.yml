@@ -32,8 +32,6 @@ jobs:
         uses: gradle/gradle-build-action@v2
       - run: gradle init
 
-      - name:
-
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
         
