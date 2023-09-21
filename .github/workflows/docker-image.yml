@@ -41,10 +41,24 @@ jobs:
           gradle-version: 7.1.1
           arguments: build -x test
 
+      - name: Check if image with tag exists
+        id: check-image
+        run: |
+          IMAGE_TAG=kafka-topic-service-latest
+          REPOSITORY=suite-ecr
+          if aws ecr describe-images --repository-name $REPOSITORY --image-ids imageTag=$IMAGE_TAG; then
+            echo "Image with tag $IMAGE_TAG exists in repository $REPOSITORY"
+            echo "::set-output name=image_exists::true"
+          else
+            echo "Image with tag $IMAGE_TAG does not exist in repository $REPOSITORY"
+            echo "::set-output name=image_exists::false"
+          fi
+
       - name: Delete existing image with the same tag
-        id: delete-image
+        if: steps.check-image.outputs.image_exists == 'true'
         run: |
           aws ecr batch-delete-image --repository suite-ecr --image-ids imageTag=kafka-topic-service-latest
+      
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
