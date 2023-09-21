@@ -1,0 +1,58 @@
+name: Docker Image KAFKA_TOPIC_SERVICE CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: production application file setting
+        run: |
+          touch ./src/main/resources/application.yml 
+          echo ${{secrets.KAFKA_TOPIC_SERVICE_APPLICATION_YML}} > ./src/main/resources/application.yml
+      - uses: actions/upload-artifact@v2
+        with:
+          name: application.yml
+          path: ./src/main/resources/application.yml
+        
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        
+      - name: Build with Gradle
+        run: ./gradlew clean build -x test
+
+      - name: Get current time
+        uses: 1466587594/get-current-time@v2
+        id: current-time
+        with:
+          format: YYYY-MM-DDTHH-mm-ss
+          utcOffset: "+09:00"
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2 ## 자신의 리전
+
+      - name: Login to ECR
+        uses: aws-actions/amazon-ecr-login@v1
+        
+		## sample라는 ECR 리파지터리에 현재 시간 태그를 생성하고, 푸쉬합니다. xxx부분은 본인의 레파지터리 주소입니다.
+      - name: Build & Push to ECR
+        run: |
+          docker build -t suite-ecr:kafka-topic-service-latest .
+          docker tag suite-ecr:kafka-topic-service-latest 386659376683.dkr.ecr.ap-northeast-2.amazonaws.com/suite-ecr:kafka-topic-service-latest
+          docker push 386659376683.dkr.ecr.ap-northeast-2.amazonaws.com/suite-ecr:kafka-topic-service-latest
