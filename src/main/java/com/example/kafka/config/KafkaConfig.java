@@ -33,8 +33,8 @@ public class KafkaConfig {
     @Bean public NewTopic SuiteRoomTerminate() {
         return new NewTopic("SuiteRoom-Terminate", 3, (short) 1);
     }
-    @Bean public NewTopic SuiteRoomTerminateError() {
-        return new NewTopic("SuiteRoom-Terminate-Error", 3, (short) 1);
+    @Bean public NewTopic SuiteRoomTerminateComplete() {
+        return new NewTopic("SuiteRoom-Terminate-Complete", 3, (short) 1);
     }
     @Bean public NewTopic TerminateNotification() {
         return new NewTopic("Terminate-Notification", 3, (short) 1);
