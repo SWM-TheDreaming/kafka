@@ -24,47 +24,47 @@ public class KafkaConfig {
     private String bootstrapServers;
 
     @Bean public NewTopic SuiteRoomJoin() {
-        return new NewTopic("SuiteRoom-Join", 3, (short) 1);
+        return new NewTopic("SuiteRoom-Join", 3, (short) 3);
     }
     @Bean public NewTopic SuiteRoomJoinError() {
-        return new NewTopic("SuiteRoom-Join-Error", 3, (short) 1);
+        return new NewTopic("SuiteRoom-Join-Error", 3, (short) 3);
     }
-    @Bean public NewTopic JoinCompletionNotification() {return new NewTopic("Join-Completion-Notification", 3, (short) 1);}
+    @Bean public NewTopic JoinCompletionNotification() {return new NewTopic("Join-Completion-Notification", 3, (short) 3);}
     @Bean public NewTopic SuiteRoomTerminate() {
-        return new NewTopic("SuiteRoom-Terminate", 3, (short) 1);
+        return new NewTopic("SuiteRoom-Terminate", 3, (short) 3);
     }
-    @Bean public NewTopic SuiteRoomTerminateComplete() { return new NewTopic("SuiteRoom-Terminate-Complete", 3, (short) 1); }
+    @Bean public NewTopic SuiteRoomTerminateComplete() { return new NewTopic("SuiteRoom-Terminate-Complete", 3, (short) 3); }
     @Bean public NewTopic TerminateNotification() {
-        return new NewTopic("Terminate-Notification", 3, (short) 1);
+        return new NewTopic("Terminate-Notification", 3, (short) 3);
     }
     @Bean public NewTopic UserRegistrationFCM() {
-        return new NewTopic("User-Registration-FCM", 3, (short) 1);
+        return new NewTopic("User-Registration-FCM", 3, (short) 3);
     }
-    @Bean public NewTopic UserRegistrationUserMetaInfo() {return new NewTopic("User-Registration-UserMetaInfo", 3, (short) 1);}
+    @Bean public NewTopic UserRegistrationUserMetaInfo() {return new NewTopic("User-Registration-UserMetaInfo", 3, (short) 3);}
     @Bean public NewTopic SuiteRoomCancelJoin() {
-        return new NewTopic("SuiteRoom-CancelJoin", 3, (short) 1);
+        return new NewTopic("SuiteRoom-CancelJoin", 3, (short) 3);
     }
-    @Bean public NewTopic SuiteRoomCancelJoinError() {return new NewTopic("SuiteRoom-CancelJoin-Error", 3, (short) 1);}
-    @Bean public NewTopic JoinCancelJoinNotification() {return new NewTopic("Join-CancelJoin-Notification", 3, (short) 1);}
-    @Bean public NewTopic SuiteRoomContractCreation() {return new NewTopic("SuiteRoom-Contract-Creation", 3, (short) 1);}
-    @Bean public NewTopic ContractDeliveryNotification() {return new NewTopic("Contract-Delivery-Notification", 3, (short) 1);}
+    @Bean public NewTopic SuiteRoomCancelJoinError() {return new NewTopic("SuiteRoom-CancelJoin-Error", 3, (short) 3);}
+    @Bean public NewTopic JoinCancelJoinNotification() {return new NewTopic("Join-CancelJoin-Notification", 3, (short) 3);}
+    @Bean public NewTopic SuiteRoomContractCreation() {return new NewTopic("SuiteRoom-Contract-Creation", 3, (short) 3);}
+    @Bean public NewTopic ContractDeliveryNotification() {return new NewTopic("Contract-Delivery-Notification", 3, (short) 3);}
     @Bean public NewTopic StudyMissionCreation() {
-        return new NewTopic("Study-MissionCreation", 3, (short) 1);
+        return new NewTopic("Study-MissionCreation", 3, (short) 3);
     }
-    @Bean public NewTopic StudyMissionCreationError() {return new NewTopic("Study-MissionCreation-Error", 3, (short) 1);}
-    @Bean public NewTopic HallOfFameNotification() {return new NewTopic("HallOfFame-Notification", 3, (short) 1);}
-    @Bean public NewTopic HallOfFameNotificationError() {return new NewTopic("HallOfFame-Notification-Error", 3, (short) 1);}
-    @Bean public NewTopic SuiteRoomStart() {return new NewTopic("SuiteRoom-Start", 3, (short) 1);}
-    @Bean public NewTopic SuiteRoomStartError() {return new NewTopic("SuiteRoom-Start-Error", 3, (short) 1);}
-    @Bean public NewTopic StartNotification() {return new NewTopic("Start-Notification", 3, (short) 1);}
-    @Bean public NewTopic StudyStop() {return new NewTopic("Study-Stop", 3, (short) 1);}
-    @Bean public NewTopic DepositDetail() {return new NewTopic("Deposit-Detail", 3, (short) 1);}
+    @Bean public NewTopic StudyMissionCreationError() {return new NewTopic("Study-MissionCreation-Error", 3, (short) 3);}
+    @Bean public NewTopic HallOfFameNotification() {return new NewTopic("HallOfFame-Notification", 3, (short) 3);}
+    @Bean public NewTopic HallOfFameNotificationError() {return new NewTopic("HallOfFame-Notification-Error", 3, (short) 3);}
+    @Bean public NewTopic SuiteRoomStart() {return new NewTopic("SuiteRoom-Start", 3, (short) 3);}
+    @Bean public NewTopic SuiteRoomStartError() {return new NewTopic("SuiteRoom-Start-Error", 3, (short) 3);}
+    @Bean public NewTopic StartNotification() {return new NewTopic("Start-Notification", 3, (short) 3);}
+    @Bean public NewTopic StudyStop() {return new NewTopic("Study-Stop", 3, (short) 3);}
+    @Bean public NewTopic DepositDetail() {return new NewTopic("Deposit-Detail", 3, (short) 3);}
     @Bean public NewTopic SuiteRoomEnd() {
-        return new NewTopic("SuiteRoom-End", 3, (short) 1);
+        return new NewTopic("SuiteRoom-End", 3, (short) 3);
     }
 
     @Bean public NewTopic StoppedStudy() {
-        return new NewTopic("Stopped-Study", 3, (short) 1);
+        return new NewTopic("Stopped-Study", 3, (short) 3);
     }
     @Bean
     public ProducerFactory<String, String> producerFactory() {
