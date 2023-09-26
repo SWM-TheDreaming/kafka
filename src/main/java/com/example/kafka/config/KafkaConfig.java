@@ -59,6 +59,8 @@ public class KafkaConfig {
     @Bean public NewTopic StartNotification() {return new NewTopic("Start-Notification", 3, (short) 3);}
     @Bean public NewTopic StudyStop() {return new NewTopic("Study-Stop", 3, (short) 3);}
     @Bean public NewTopic DepositDetail() {return new NewTopic("Deposit-Detail", 3, (short) 3);}
+    @Bean public NewTopic DepositPayment() {return new NewTopic("Deposit-Payment", 3, (short) 3);}
+    @Bean public NewTopic DepositPaymentError() {return new NewTopic("Deposit-Payment-Error", 3, (short) 3);}
     @Bean public NewTopic SuiteRoomEnd() {
         return new NewTopic("SuiteRoom-End", 3, (short) 3);
     }
