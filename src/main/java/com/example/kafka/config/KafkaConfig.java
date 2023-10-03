@@ -68,6 +68,8 @@ public class KafkaConfig {
     @Bean public NewTopic StoppedStudy() {
         return new NewTopic("Stopped-Study", 3, (short) 3);
     }
+
+    @Bean public NewTopic HallOfFameSelection() { return new NewTopic("HallOfFame-Selection", 3, (short) 3); }
     @Bean
     public ProducerFactory<String, String> producerFactory() {
         Map<String,Object> configs = new HashMap<>();
